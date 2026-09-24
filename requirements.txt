@@ -1,0 +1,16 @@
+# langchain-core
+
+langchain
+langchain_community
+langchain_core
+
+# HF interactions
+langchain_huggingface
+huggingface-hub
+transformers
+
+python-dotenv
+
+sentence-transformers
+youtube-transcript-api
+streamlit
