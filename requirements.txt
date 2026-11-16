@@ -1,5 +1,4 @@
 # langchain-core
-
 langchain
 langchain_community
 langchain_core
@@ -11,7 +10,11 @@ transformers
 
 langchain-google-genai
 
+# load-dotenv
 python-dotenv
+
+# Vectorstore
+faiss
 
 sentence-transformers
 youtube-transcript-api
