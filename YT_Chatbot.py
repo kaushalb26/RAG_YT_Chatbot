@@ -39,7 +39,7 @@ vector_store = FAISS.from_documents(
     embedding = embedding_model
 )
 
-vector_store.index_to_docstore_id
+# vector_store.index_to_docstore_id
 
 retriever = vector_store.as_retriever(
     search_type = 'similarity',
@@ -66,7 +66,7 @@ prompt = PromptTemplate(
 
 llm = HuggingFaceEndpoint(
     model = "meta-llama/Llama-3.1-8B-Instruct",
-    task = 'text-genertion'
+    task = 'text-generation'
 )
 
 model = ChatHuggingFace(llm = llm)
