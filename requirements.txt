@@ -9,6 +9,8 @@ langchain_huggingface
 huggingface-hub
 transformers
 
+langchain-google-genai
+
 python-dotenv
 
 sentence-transformers
