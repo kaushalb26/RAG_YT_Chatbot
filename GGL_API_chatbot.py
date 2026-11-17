@@ -26,12 +26,14 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 
 load_dotenv()
 
-video_id = "Gfr50f6ZBvo"
+video_id = input('Enter YouTube video ID: ').strip()
+
 try:
     api = YouTubeTranscriptApi()
     transcript_list = api.fetch(video_id=video_id, languages=["en", "hi"])
 except TranscriptsDisabled:
     print("Sorry for Inconvinience!, Transcript is not available for this video.")
+    raise SystemExit(1)
 
 transcript = " ".join(doc.text for doc in transcript_list)
 print("****=======================================*****")
@@ -120,14 +122,30 @@ conversational_rag = RunnableWithMessageHistory(
 # --- Usage ---
 config = {"configurable": {"session_id": "video_rag_1"}}
 
-# First question
-res1 = conversational_rag.invoke(
-    {"input": "What topics are discussed in this video?"}, config=config
-)
-print(res1["answer"])
+print("\nVideo loaded. Ask anything about it.")
+print("Type 'exit' or 'quit' to stop, 'clear' to reset chat memory.\n")
 
-# Follow-up question (rewrites "it" -> "photosynthesis" before searching the vector DB)
-res2 = conversational_rag.invoke(
-    {"input": "What was my previous question?"}, config=config
-)
-print(res2["answer"])
+
+while True:
+    try:
+        question = input('You: ').strip()
+    except (KeyboardInterrupt, EOFError):
+        print('\nBye!')
+        break
+    
+    if not question:
+        continue
+    if question.lower() in {'exit','quit','q'}:
+        print('Bye!')
+        break
+
+    if question.lower() == 'clear':
+        store.pop('video_rag_1',None)
+        print('Chat memory cleared.\n')
+        continue
+
+    try:
+        res = conversational_rag.invoke({'input': question}, config = config)
+        print(f"\nBot: {res['answer']}\n")
+    except Exception as e:
+        print(f'\nError: {e}\n')
