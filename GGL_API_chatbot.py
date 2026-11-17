@@ -40,8 +40,12 @@ print("****=======================================*****")
 print("Transcript : ", transcript)
 print("****=======================================*****")
 
-model = ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash", max_tokens=None, timeout=None, max_retries=2
+rewrite_model = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash", temperature= 0, max_tokens=None, timeout=None, max_retries=2
+)
+
+answer_model = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash", temperature= 0.2, max_tokens=None, timeout=None, max_retries=2
 )
 
 splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
@@ -80,7 +84,7 @@ contextualize_prompt = ChatPromptTemplate.from_messages(
 
 
 history_aware_retriever = create_history_aware_retriever(
-    model, retriever, contextualize_prompt
+    rewrite_model, retriever, contextualize_prompt
 )
 
 
@@ -97,7 +101,7 @@ qa_prompt = ChatPromptTemplate.from_messages(
         ("human", "{input}"),
     ]
 )
-qa_chain = create_stuff_documents_chain(model, qa_prompt)
+qa_chain = create_stuff_documents_chain(answer_model, qa_prompt)
 
 # 4. Combine Retriever + QA Chain, then wrap with Memory
 rag_chain = create_retrieval_chain(history_aware_retriever, qa_chain)
