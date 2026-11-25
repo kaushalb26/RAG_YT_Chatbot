@@ -40,11 +40,11 @@ load_dotenv()
 # ---------------------------------------------------------------------------
 CHATBOT_MODEL = "gemini-3.1-flash-lite"
 JUDGE_MODEL = "qwen/qwen3.8-27b"
-CHUNK_SIZE = 1000
-CHUNK_OVERLAP = 200
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 100
 TOP_K = 3
 MAX_RETRIES = 12
-REPORT_FILE = "baseline.json"
+REPORT_FILE = "candidate.json"
 
 CONFIG_HASH = hashlib.md5(
     f"{CHATBOT_MODEL}|{CHUNK_SIZE}|{CHUNK_OVERLAP}|{TOP_K}".encode()
@@ -127,9 +127,6 @@ latencies = []
 print("\n--- Phase 1: Running YT_RAG_Chatbot ---")
 for idx, item in enumerate(golden_data):
     key = f"{CONFIG_HASH}::{item['video_id']}::{item['input']}"
-    legacy_key = f"{item['video_id']}::{item['input']}"
-    if key not in cached_outputs and legacy_key in cached_outputs:
-        cached_outputs[key] = cached_outputs[legacy_key]
 
     if key in cached_outputs:
         entry = cached_outputs[key]
