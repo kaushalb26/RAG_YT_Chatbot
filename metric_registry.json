@@ -1,0 +1,32 @@
+{
+  "Faithfulness": {
+    "direction": "higher_is_better",
+    "baseline_mean": 0.9419,
+    "run_std_dev": 0.0,
+    "noise_threshold": 0.02
+  },
+  "Answer Relevancy": {
+    "direction": "higher_is_better",
+    "baseline_mean": 0.8378,
+    "run_std_dev": 0.0,
+    "noise_threshold": 0.02
+  },
+  "Contextual Precision": {
+    "direction": "higher_is_better",
+    "baseline_mean": 0.5451,
+    "run_std_dev": 0.0,
+    "noise_threshold": 0.02
+  },
+  "Contextual Recall": {
+    "direction": "higher_is_better",
+    "baseline_mean": 0.7917,
+    "run_std_dev": 0.0,
+    "noise_threshold": 0.02
+  },
+  "p95_latency_sec": {
+    "direction": "lower_is_better",
+    "baseline_mean": 25.666,
+    "run_std_dev": 0.0,
+    "noise_threshold": 0.25
+  }
+}
