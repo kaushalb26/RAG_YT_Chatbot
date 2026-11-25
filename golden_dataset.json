@@ -1,0 +1,230 @@
+[
+  {
+    "video_id": "Gfr50f6ZBvo",
+    "video_url": "https://www.youtube.com/watch?v=Gfr50f6ZBvo",
+    "question_type": "factual",
+    "input": "What was the first chess computer Demis Hassabis bought, and how did he pay for it?",
+    "expected_output": "He bought a ZX Spectrum when he was about eight years old using winnings from a chess competition.",
+    "reference_context": [
+      "starting to play chess when i was around four years old and then um it was actually with winnings from a chess competition that i managed to buy my first chess computer when i was about eight years old it was a zx spectrum which was hugely popular in the uk at the time"
+    ]
+  },
+  {
+    "video_id": "Gfr50f6ZBvo",
+    "video_url": "https://www.youtube.com/watch?v=Gfr50f6ZBvo",
+    "question_type": "factual",
+    "input": "What was the first AI program Demis Hassabis wrote on his Commodore Amiga?",
+    "expected_output": "Around age 12, he wrote a program on his Commodore Amiga to play Othello (Reversi) using alpha-beta search principles because the machine was not powerful enough to run a full chess program.",
+    "reference_context": [
+      "i remember my first ai program being uh programming my amiga it couldn't it wasn't powerful enough to play chess i couldn't write a whole chess program but i wrote a program for it to play othello reversey it's sometimes called i think in the u.s and so a slightly simpler game than chess but i used all of the principles that chess programs had alpha beta search all of that and that was my first ai program i remember that very well was around 12 years old"
+    ]
+  },
+  {
+    "video_id": "Gfr50f6ZBvo",
+    "video_url": "https://www.youtube.com/watch?v=Gfr50f6ZBvo",
+    "question_type": "reasoning",
+    "input": "How does Demis Hassabis explain the progression from AlphaGo to AlphaGo Zero, AlphaZero, and MuZero?",
+    "expected_output": "AlphaGo was trained specifically to play Go using human games; AlphaGo Zero removed the need for human games by learning from random self-play; AlphaZero removed Go-specific symmetries so it could play any two-player game from scratch; and MuZero went further by learning the rules of the environment itself without being given them.",
+    "reference_context": [
+      "alphago was um a learning system but it was specifically trained to only play go right so uh and what we wanted to do with first version of go is just get to world champion performance no matter how we did it right and then and then of course alphago zero we we we removed the need to use human games as a starting point right so it could just play against itself from random starting point from the beginning so that removed the the need for human knowledge uh about go and then finally alpha zero then generalized it so that any things we had in there the system including things like symmetry of the go board uh were removed so the alpha zero could play from scratch any two player game and then mu0 which is the final latest version of that set of things was then extending it so that you didn't even have to give it the rules of the game it would learn that for itself so it could also deal with computer games as well as board games"
+    ]
+  },
+  {
+    "video_id": "Gfr50f6ZBvo",
+    "video_url": "https://www.youtube.com/watch?v=Gfr50f6ZBvo",
+    "question_type": "factual",
+    "input": "What is Levinthal's paradox as discussed in the protein folding section of the conversation?",
+    "expected_output": "Levinthal calculated that an average protein can fold into roughly 10 to the power of 300 different conformations, yet in nature physics solves that search problem and folds the protein in milliseconds.",
+    "reference_context": [
+      "and actually levantal who is another scientist uh uh a contemporary of anfinsen uh he he coined this eleventh house what became known as levantal's paradox which is exactly what you're saying he calculated roughly a protein an average protein which is maybe 2 000 amino acids bases long is um is is can fold in maybe 10 to the power 300 different conformations so there's 10 to the power 300 different ways that protein could fold up and yet somehow in nature physics solves this solves this in a matter of milliseconds"
+    ]
+  },
+  {
+    "video_id": "Gfr50f6ZBvo",
+    "video_url": "https://www.youtube.com/watch?v=Gfr50f6ZBvo",
+    "question_type": "reasoning",
+    "input": "How did DeepMind use deep reinforcement learning to help with nuclear fusion?",
+    "expected_output": "Collaborating with EPFL in Switzerland on their test reactor, DeepMind trained a deep reinforcement learning controller to predict plasma behavior milliseconds ahead and adjust superconducting magnetic fields to carve and hold high-temperature plasma in specific shapes for record durations.",
+    "reference_context": [
+      "in this case in fusion we we collaborated with epfl in switzerland the swiss technical institute who are amazing they have a test reactor that they were willing to let us use... in this case plasma control was was perfect so you know the plasma it's a million degrees celsius something like that it's hotter than the sun... you kind of want to predict ahead of time what the plasma's going to do so you can move the magnetic field within a few milliseconds... we published it in a nature paper last year uh we held the fusion that we held the plasma in specific shapes so actually it's almost like carving the plasma into different shapes and control and hold it there for the record amount of time"
+    ]
+  },
+  {
+    "video_id": "Gfr50f6ZBvo",
+    "video_url": "https://www.youtube.com/watch?v=Gfr50f6ZBvo",
+    "question_type": "reasoning",
+    "input": "Why does Demis Hassabis believe we are likely alone in the galaxy despite Fermi paradox arguments?",
+    "expected_output": "He argues that if intelligent civilizations were common and even slightly ahead of us, self-replicating probes or megastructures like Dyson spheres and radio emissions would have filled the galaxy within a million years, yet when humanity opened its radio telescopes we heard nothing.",
+    "reference_context": [
+      "my feeling currently is that that we are alone i think that's the most likely scenario given what what evidence we have so um and the reasoning is i think that you know we've tried since uh things like seti program... within a million years i think you would have one of these probes in every system in the galaxy... there would be constructions like that would be visible across base... when we opened our ears at the point we got technologically sophisticated enough in the space age we should have heard a cacophony of voices we should have joined that cacophony of voices and what we did we opened our ears and we heard nothing"
+    ]
+  },
+  {
+    "video_id": "402EyLS59ho",
+    "video_url": "https://www.youtube.com/watch?v=402EyLS59ho",
+    "question_type": "factual",
+    "input": "What are the four core DeepEval concepts introduced at the start of the tutorial?",
+    "expected_output": "The four core concepts are Goldens, Test Cases, Datasets, and Metrics.",
+    "reference_context": [
+      "firstly I want you to uh just read these keywords like goldens test cases data sets and matrices so your mind is thinking that what is it what is golden what is test case test cases you are getting that okay test case is like something is defined and we need to run on it so data set is like some kind of storage or something that which is stored on it Matrices you can understand and it some kind of factor that on which we are going to test"
+    ]
+  },
+  {
+    "video_id": "402EyLS59ho",
+    "video_url": "https://www.youtube.com/watch?v=402EyLS59ho",
+    "question_type": "factual",
+    "input": "What four fields are packaged inside an LLMTestCase object in the tutorial's workflow?",
+    "expected_output": "An LLMTestCase packages four fields: input, actual_output, retrieval_context (context), and expected_output.",
+    "reference_context": [
+      "these four things LLM test case will contain one LM test case will contain this four things what what what was it the actual input the actual output the context the rag application has given and the fourth thing is expected output from the golden"
+    ]
+  },
+  {
+    "video_id": "402EyLS59ho",
+    "video_url": "https://www.youtube.com/watch?v=402EyLS59ho",
+    "question_type": "reasoning",
+    "input": "How does the tutorial's `ensure_dataset_with_goldens` helper avoid duplicate entries in Confident AI?",
+    "expected_output": "It pulls the existing dataset using its alias, collects all existing golden inputs into a set, checks each requested golden against that set, and only appends and pushes goldens whose inputs are not already present.",
+    "reference_context": [
+      "this function is uh passing us the logic that uh if if there is no no uh goldens present in the data set pass this data set pass this goldens into the data set if it is present and if it is not same same to this golden append them okay so if I added requested goldens if I add one more golden here and if the two goldens already present these two will not add but the third will add"
+    ]
+  },
+  {
+    "video_id": "402EyLS59ho",
+    "video_url": "https://www.youtube.com/watch?v=402EyLS59ho",
+    "question_type": "factual",
+    "input": "What does the `query_rag` function return in the speaker's implementation?",
+    "expected_output": "It takes a user question and returns a dictionary containing the generated answer and the retrieved context.",
+    "reference_context": [
+      "just remember that this query rack function will take the questions will take the questions and then return me and dictionary with a key answer and questions... I will get in return what the answer and the context Okay the answer and the context with the both thing we need to we need for our DBL"
+    ]
+  },
+  {
+    "video_id": "402EyLS59ho",
+    "video_url": "https://www.youtube.com/watch?v=402EyLS59ho",
+    "question_type": "reasoning",
+    "input": "Why did the speaker only create two goldens when running the live demo in the video?",
+    "expected_output": "Because DeepEval makes multiple LLM-as-a-judge API calls per test case during evaluation, which is expensive and slow, so using only two goldens kept the demo fast and low-cost.",
+    "reference_context": [
+      "during the running of the DP well uh the LLM calls are used pretty expensively the LM APIs are used pretty expensively so that for for that only I have created only two goldens as you can see only two goldens so that uh it will not take that much cost okay so for that I have created a single page because it should work fast"
+    ]
+  },
+  {
+    "video_id": "402EyLS59ho",
+    "video_url": "https://www.youtube.com/watch?v=402EyLS59ho",
+    "question_type": "factual",
+    "input": "In the demo's evaluation report, which metric failed and what was its score versus the threshold?",
+    "expected_output": "Contextual Relevancy failed because its score was 0.35 (explained as 0.38 in the reason text), which fell below the 0.5 threshold.",
+    "reference_context": [
+      "You can see that answer relevancy my score is one Faithfulness my score is one Context reason my score is one But contextual relevancy my score is 0.35 But the threshold was 0.5 What is threshold If the score of a particular matrix falls below the threshold the test will fail directly the test will fail"
+    ]
+  },
+  {
+    "video_id": "7_LTU0LA374",
+    "video_url": "https://www.youtube.com/watch?v=7_LTU0LA374",
+    "question_type": "reasoning",
+    "input": "Why are traditional metrics like BLEU, ROUGE, and F1 insufficient for evaluating RAG systems?",
+    "expected_output": "Traditional metrics only measure surface-level word/n-gram overlap or exact entity matching against a fixed reference text, whereas a RAG system has two distinct stages—retrieval and generation—so it needs metrics that evaluate context relevance, grounding, and whether the answer addresses the question.",
+    "reference_context": [
+      "traditional matrix like blue rouge and F1 work well when there is a fixed reference answer and the goal is to match its wording or important elements they are perfect for translation summarization and extraction but a rag system works differently it retrieves information first and then generates an answer from that information so the quality of the final answer depends on both the retrieval step and the generation step because of this similarity based matrix are not enough a rag system needs matrix that directly evaluate how relevant the retrieved context is how well the answer uses that context and how accurately the answer responds to the question"
+    ]
+  },
+  {
+    "video_id": "7_LTU0LA374",
+    "video_url": "https://www.youtube.com/watch?v=7_LTU0LA374",
+    "question_type": "factual",
+    "input": "What is the difference between BLEU and ROUGE as explained in the video?",
+    "expected_output": "BLEU focuses on n-gram precision (how many n-grams in the generated text appear in the reference, with a brevity penalty), making it standard for machine translation, whereas ROUGE focuses on recall (how much of the reference's important content is captured), making it ideal for summarization.",
+    "reference_context": [
+      "blue or bilingual evaluation under study measures how many engrams in the generated text also appears in the reference text... this is why blue became the standard for machine translation... instead of focusing on matching phrases exactly Rouge focuses on recall that is how much of the important information is captured this makes rouge especially useful for summarization"
+    ]
+  },
+  {
+    "video_id": "7_LTU0LA374",
+    "video_url": "https://www.youtube.com/watch?v=7_LTU0LA374",
+    "question_type": "factual",
+    "input": "If a retriever fetches 5 chunks for a query and only 2 of them are relevant, what is the Context Precision score?",
+    "expected_output": "The Context Precision score is 2 out of 5, which equals 0.4.",
+    "reference_context": [
+      "context precision measures how much of the retrieved context is actually relevant to the question if the system retrieves five chunks and only two out of them are useful the precision is two out of five... the context precision is 2 out of five which is 0.4"
+    ]
+  },
+  {
+    "video_id": "7_LTU0LA374",
+    "video_url": "https://www.youtube.com/watch?v=7_LTU0LA374",
+    "question_type": "factual",
+    "input": "How does Context Recall differ from Context Precision in the video's explanation?",
+    "expected_output": "Context Precision measures how much of the retrieved chunks are relevant (signal vs. noise), while Context Recall measures how much of all the relevant information existing in the database the retriever actually managed to find (e.g., finding 2 out of 3 relevant chunks gives a recall of 0.66).",
+    "reference_context": [
+      "context precision measures how much of the retrieved context is actually relevant to the question... next let's discuss context recall it measures how much of the relevant information the retriever managed to find if there are three important chunks in the database and the retriever finds two out of them the recall is two out of three"
+    ]
+  },
+  {
+    "video_id": "7_LTU0LA374",
+    "video_url": "https://www.youtube.com/watch?v=7_LTU0LA374",
+    "question_type": "reasoning",
+    "input": "What causes Faithfulness to drop in a RAG system according to the video?",
+    "expected_output": "Faithfulness drops when the generated answer includes statements or claims that are not supported by or present in the retrieved context chunks.",
+    "reference_context": [
+      "faithfulness checks whether the answer is fully supported by the retrieved context if a statement in the answer does not appear in the retrieved text faithfulness goes down for example if the retrieved context mentions Tesla's founders and the answer adds a claim that isn't present in those chunks faithfulness drops because the answer is no longer grounded in the provided evidence"
+    ]
+  },
+  {
+    "video_id": "7_LTU0LA374",
+    "video_url": "https://www.youtube.com/watch?v=7_LTU0LA374",
+    "question_type": "factual",
+    "input": "What are the four main evaluation scores provided by the RAGAS framework?",
+    "expected_output": "RAGAS provides four main scores: Faithfulness, Answer Relevance, Context Precision, and Context Recall.",
+    "reference_context": [
+      "raas provides four main scores faithfulness which is whether the answer is fully supported by the retrieved context answer relevance which checks how well the answer addresses the question context precision which checks how much of the retrieved context is actually relevant and context recall which tells how much of the relevant information was successfully retrieved"
+    ]
+  },
+  {
+    "video_id": "Gfr50f6ZBvo",
+    "video_url": "https://www.youtube.com/watch?v=Gfr50f6ZBvo",
+    "question_type": "out_of_scope",
+    "input": "What is the current stock price of Nvidia today?",
+    "expected_output": "I cannot answer this because the video transcript does not contain information about Nvidia's current stock price.",
+    "reference_context": []
+  },
+  {
+    "video_id": "Gfr50f6ZBvo",
+    "video_url": "https://www.youtube.com/watch?v=Gfr50f6ZBvo",
+    "question_type": "adversarial_unanswerable",
+    "input": "What did Demis Hassabis say about GPT-5's release date in this podcast?",
+    "expected_output": "The video transcript does not mention GPT-5 or its release date.",
+    "reference_context": []
+  },
+  {
+    "video_id": "402EyLS59ho",
+    "video_url": "https://www.youtube.com/watch?v=402EyLS59ho",
+    "question_type": "out_of_scope",
+    "input": "How do I configure a PostgreSQL database connection in FastAPI?",
+    "expected_output": "I cannot answer this because the provided video transcript only covers RAG evaluation with DeepEval and Confident AI, not PostgreSQL or FastAPI setup.",
+    "reference_context": []
+  },
+  {
+    "video_id": "402EyLS59ho",
+    "video_url": "https://www.youtube.com/watch?v=402EyLS59ho",
+    "question_type": "adversarial_unanswerable",
+    "input": "What exact monthly subscription price did the speaker say Confident AI charges?",
+    "expected_output": "The video transcript does not mention any pricing or subscription cost for Confident AI.",
+    "reference_context": []
+  },
+  {
+    "video_id": "7_LTU0LA374",
+    "video_url": "https://www.youtube.com/watch?v=7_LTU0LA374",
+    "question_type": "out_of_scope",
+    "input": "Can you write a Python script to fine-tune Llama 3 using LoRA?",
+    "expected_output": "I cannot answer this because the provided video transcript only explains RAG evaluation metrics and RAGAS, not fine-tuning Llama 3.",
+    "reference_context": []
+  },
+  {
+    "video_id": "7_LTU0LA374",
+    "video_url": "https://www.youtube.com/watch?v=7_LTU0LA374",
+    "question_type": "adversarial_unanswerable",
+    "input": "What exact score did GPT-4 achieve on the MMLU benchmark in this video?",
+    "expected_output": "The video transcript does not mention GPT-4 or MMLU benchmark scores.",
+    "reference_context": []
+  }
+]

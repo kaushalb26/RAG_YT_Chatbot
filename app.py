@@ -32,7 +32,7 @@ try:
     api = YouTubeTranscriptApi()
     transcript_list = api.fetch(video_id=video_id, languages=["en", "hi"])
 except TranscriptsDisabled:
-    print("Sorry for Inconvinience!, Transcript is not available for this video.")
+    print("Sorry for Inconvenience!, Transcript is not available for this video.")
     raise SystemExit(1)
 
 transcript = " ".join(doc.text for doc in transcript_list)
