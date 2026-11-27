@@ -1,7 +1,10 @@
 from langchain_google_genai import (
     ChatGoogleGenerativeAI,
 )
-from langchain_classic.chains import create_history_aware_retriever, create_retrieval_chain
+from langchain_classic.chains import (
+    create_history_aware_retriever,
+    create_retrieval_chain,
+)
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 
 from langchain_core.chat_history import InMemoryChatMessageHistory
@@ -13,7 +16,12 @@ from langchain_core.prompts import (
 )
 from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
-from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
+from youtube_transcript_api import (
+    NoTranscriptFound,
+    TranscriptsDisabled,
+    VideoUnavailable,
+    YouTubeTranscriptApi,
+)
 from langchain_core.runnables import (
     RunnableLambda,
     RunnablePassthrough,
@@ -23,32 +31,54 @@ from langchain_core.runnables import (
 from langchain_core.output_parsers import StrOutputParser
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.runnables.history import RunnableWithMessageHistory
+from sentence_transformers import CrossEncoder
 
 load_dotenv()
 
-video_id = input('Enter YouTube video ID: ').strip()
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 100
+FETCH_K = 10
+TOP_K = 6
+RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+
+video_id = input("Enter YouTube video ID: ").strip()
 
 try:
     api = YouTubeTranscriptApi()
     transcript_list = api.fetch(video_id=video_id, languages=["en", "hi"])
-except TranscriptsDisabled:
+except (TranscriptsDisabled, NoTranscriptFound, VideoUnavailable):
     print("Sorry for Inconvenience!, Transcript is not available for this video.")
     raise SystemExit(1)
 
 transcript = " ".join(doc.text for doc in transcript_list)
+
+if not transcript.strip():
+    print("Transcript is empty for this video.")
+    raise SystemExit(1)
+
 print("****=======================================*****")
 print("Transcript : ", transcript)
 print("****=======================================*****")
 
 rewrite_model = ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash", temperature= 0, max_tokens=None, timeout=None, max_retries=2
+    model="gemini-3.1-flash-lite",
+    temperature=0,
+    max_tokens=None,
+    timeout=None,
+    max_retries=2,
 )
 
 answer_model = ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash", temperature= 0.2, max_tokens=None, timeout=None, max_retries=2
+    model="gemini-3.1-flash-lite",
+    temperature=0.2,
+    max_tokens=None,
+    timeout=None,
+    max_retries=2,
 )
 
-splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP
+)
 
 
 documents = splitter.create_documents([transcript])
@@ -63,7 +93,26 @@ vectorstore = FAISS.from_documents(documents=documents, embedding=embeddings2)
 # vectorstore.index_to_docstore_id(whatever ids text you want to see - enter Id )
 
 
-retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 3})
+base_retriever = vectorstore.as_retriever(
+    search_type="similarity", search_kwargs={"k": FETCH_K}
+)
+reranker = CrossEncoder(RERANKER_MODEL)
+
+
+def retrieve_and_rerank(query: str):
+    docs = base_retriever.invoke(query)
+    if not docs:
+        return []
+    pairs = [(query, doc.page_content) for doc in docs]
+    scores = reranker.predict(pairs)
+    ranked_docs = [
+        doc
+        for doc, _ in sorted(zip(docs, scores), key=lambda x: float(x[1]), reverse=True)
+    ]
+    return ranked_docs[:TOP_K]
+
+
+reranking_retriever = RunnableLambda(retrieve_and_rerank)
 
 # retrieved_docs = retriever.invoke(query)
 # context = " ".join(doc.page_content for doc in retrieved_docs)
@@ -82,11 +131,9 @@ contextualize_prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-
 history_aware_retriever = create_history_aware_retriever(
-    rewrite_model, retriever, contextualize_prompt
+    rewrite_model, reranking_retriever, contextualize_prompt
 )
-
 
 qa_prompt = ChatPromptTemplate.from_messages(
     [
@@ -132,24 +179,24 @@ print("Type 'exit' or 'quit' to stop, 'clear' to reset chat memory.\n")
 
 while True:
     try:
-        question = input('You: ').strip()
+        question = input("You: ").strip()
     except (KeyboardInterrupt, EOFError):
-        print('\nBye!')
-        break
-    
-    if not question:
-        continue
-    if question.lower() in {'exit','quit','q'}:
-        print('Bye!')
+        print("\nBye!")
         break
 
-    if question.lower() == 'clear':
-        store.pop('video_rag_1',None)
-        print('Chat memory cleared.\n')
+    if not question:
+        continue
+    if question.lower() in {"exit", "quit", "q"}:
+        print("Bye!")
+        break
+
+    if question.lower() == "clear":
+        store.pop("video_rag_1", None)
+        print("Chat memory cleared.\n")
         continue
 
     try:
-        res = conversational_rag.invoke({'input': question}, config = config)
+        res = conversational_rag.invoke({"input": question}, config=config)
         print(f"\nBot: {res['answer']}\n")
     except Exception as e:
-        print(f'\nError: {e}\n')
+        print(f"\nError: {e}\n")

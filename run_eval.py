@@ -18,6 +18,9 @@ from langchain_classic.chains import (
     create_retrieval_chain,
 )
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
+from langchain_classic.retrievers import ContextualCompressionRetriever
+from langchain_classic.retrievers.document_compressors import CrossEncoderReranker
+from langchain_community.cross_encoders import HuggingFaceCrossEncoder
 
 from openai import OpenAI
 from pydantic import BaseModel
@@ -42,12 +45,14 @@ CHATBOT_MODEL = "gemini-3.1-flash-lite"
 JUDGE_MODEL = "qwen/qwen3.8-27b"
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 100
-TOP_K = 3
+FETCH_K = 10
+TOP_K = 6
+RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 MAX_RETRIES = 12
-REPORT_FILE = "candidate.json"
+REPORT_FILE = "candidatev3.json"
 
 CONFIG_HASH = hashlib.md5(
-    f"{CHATBOT_MODEL}|{CHUNK_SIZE}|{CHUNK_OVERLAP}|{TOP_K}".encode()
+    f"{CHATBOT_MODEL}|{CHUNK_SIZE}|{CHUNK_OVERLAP}|{FETCH_K}|{TOP_K}|{RERANKER_MODEL}".encode()
 ).hexdigest()[:8]
 
 # 1. Load Golden Dataset
@@ -55,8 +60,8 @@ with open("golden_dataset.json", "r", encoding="utf-8") as f:
     golden_data = json.load(f)
 
 # 2. Initialize Chatbot Models
-rewrite_model = ChatGoogleGenerativeAI(model=CHATBOT_MODEL, temperature=0, max_retries=5)
-answer_model = ChatGoogleGenerativeAI(model=CHATBOT_MODEL, temperature=0.2, max_retries=5)
+rewrite_model = ChatGoogleGenerativeAI(model=CHATBOT_MODEL, temperature=0, max_retries=2)
+answer_model = ChatGoogleGenerativeAI(model=CHATBOT_MODEL, temperature=0.2, max_retries=2)
 
 splitter = RecursiveCharacterTextSplitter(
     chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP
@@ -79,8 +84,13 @@ def get_rag_chain(video_id: str):
     )
     documents = splitter.create_documents([transcript])
     vectorstore = FAISS.from_documents(documents=documents, embedding=embeddings)
-    retriever = vectorstore.as_retriever(
-        search_type="similarity", search_kwargs={"k": TOP_K}
+    base_retriever = vectorstore.as_retriever(
+        search_type="similarity", search_kwargs={"k": FETCH_K}
+    )
+    reranker_encoder = HuggingFaceCrossEncoder(model_name=RERANKER_MODEL)
+    compressor = CrossEncoderReranker(model=reranker_encoder, top_n=TOP_K)
+    retriever = ContextualCompressionRetriever(
+        base_compressor=compressor, base_retriever=base_retriever
     )
 
     contextualize_prompt = ChatPromptTemplate.from_messages(

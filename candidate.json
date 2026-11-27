@@ -8,10 +8,10 @@
     "judge_model": "qwen/qwen3.8-27b"
   },
   "average_scores": {
-    "Faithfulness": 0.9392,
-    "Answer Relevancy": 0.9706,
-    "Contextual Precision": 0.7745,
-    "Contextual Recall": 0.6863
+    "Faithfulness": 0.9569,
+    "Answer Relevancy": 0.8958,
+    "Contextual Precision": 0.5903,
+    "Contextual Recall": 0.6111
   },
   "operational_metrics": {
     "p50_latency_sec": 40.984,
@@ -462,6 +462,195 @@
         "Faithfulness": {
           "score": 0.6666666666666666,
           "passed": false
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    {
+      "index": 18,
+      "video_id": "7_LTU0LA374",
+      "question_type": "factual",
+      "input": "What are the four main evaluation scores provided by the RAGAS framework?",
+      "actual_output": "Based on the transcript provided, the four evaluation metrics mentioned are:\n\n1. Context precision\n2. Context recall\n3. Answer relevance\n4. Faithfulness",
+      "expected_output": "RAGAS provides four main scores: Faithfulness, Answer Relevance, Context Precision, and Context Recall.",
+      "latency_sec": 41.035,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 19,
+      "video_id": "Gfr50f6ZBvo",
+      "question_type": "out_of_scope",
+      "input": "What is the current stock price of Nvidia today?",
+      "actual_output": "The provided transcript does not contain information regarding the current stock price of Nvidia.",
+      "expected_output": "I cannot answer this because the video transcript does not contain information about Nvidia's current stock price.",
+      "latency_sec": 31.537,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    {
+      "index": 20,
+      "video_id": "Gfr50f6ZBvo",
+      "question_type": "adversarial_unanswerable",
+      "input": "What did Demis Hassabis say about GPT-5's release date in this podcast?",
+      "actual_output": "The provided transcript does not contain any information regarding a release date for GPT-5.",
+      "expected_output": "The video transcript does not mention GPT-5 or its release date.",
+      "latency_sec": 59.006,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    {
+      "index": 21,
+      "video_id": "402EyLS59ho",
+      "question_type": "out_of_scope",
+      "input": "How do I configure a PostgreSQL database connection in FastAPI?",
+      "actual_output": "Based on the provided transcript, there is no information regarding how to configure a PostgreSQL database connection in FastAPI. The transcript focuses on configuring a RAG application, data set aliases, and using confident.ai.",
+      "expected_output": "I cannot answer this because the provided video transcript only covers RAG evaluation with DeepEval and Confident AI, not PostgreSQL or FastAPI setup.",
+      "latency_sec": 24.914,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 22,
+      "video_id": "402EyLS59ho",
+      "question_type": "adversarial_unanswerable",
+      "input": "What exact monthly subscription price did the speaker say Confident AI charges?",
+      "actual_output": "The provided transcript does not mention any monthly subscription price for Confident AI.",
+      "expected_output": "The video transcript does not mention any pricing or subscription cost for Confident AI.",
+      "latency_sec": 36.571,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    {
+      "index": 23,
+      "video_id": "7_LTU0LA374",
+      "question_type": "out_of_scope",
+      "input": "Can you write a Python script to fine-tune Llama 3 using LoRA?",
+      "actual_output": "Based on the provided transcript, there is no information regarding Python scripts or fine-tuning Llama 3 using LoRA. The transcript focuses exclusively on RAG (Retrieval-Augmented Generation) evaluation metrics and the Ragas framework.",
+      "expected_output": "I cannot answer this because the provided video transcript only explains RAG evaluation metrics and RAGAS, not fine-tuning Llama 3.",
+      "latency_sec": 25.056,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 24,
+      "video_id": "7_LTU0LA374",
+      "question_type": "adversarial_unanswerable",
+      "input": "What exact score did GPT-4 achieve on the MMLU benchmark in this video?",
+      "actual_output": "The provided transcript does not mention the MMLU benchmark or any scores achieved by GPT-4.",
+      "expected_output": "The video transcript does not mention GPT-4 or MMLU benchmark scores.",
+      "latency_sec": 69.494,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
         },
         "Answer Relevancy": {
           "score": 1.0,
