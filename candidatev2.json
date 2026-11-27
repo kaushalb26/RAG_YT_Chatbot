@@ -1,0 +1,670 @@
+{
+  "config": {
+    "chunk_size": 500,
+    "chunk_overlap": 100,
+    "search_type": "similarity",
+    "k": 4,
+    "chatbot_model": "gemini-3.1-flash-lite",
+    "judge_model": "qwen/qwen3.8-27b"
+  },
+  "average_scores": {
+    "Faithfulness": 0.9726,
+    "Answer Relevancy": 0.919,
+    "Contextual Precision": 0.603,
+    "Contextual Recall": 0.7083
+  },
+  "operational_metrics": {
+    "p50_latency_sec": 1.463,
+    "p95_latency_sec": 40.405
+  },
+  "test_cases": [
+    {
+      "index": 1,
+      "video_id": "Gfr50f6ZBvo",
+      "question_type": "factual",
+      "input": "What was the first chess computer Demis Hassabis bought, and how did he pay for it?",
+      "actual_output": "The first chess computer Demis Hassabis bought was a ZX Spectrum. He paid for it using winnings from a chess competition.",
+      "expected_output": "He bought a ZX Spectrum when he was about eight years old using winnings from a chess competition.",
+      "latency_sec": 1.703,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.3333333333333333,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 2,
+      "video_id": "Gfr50f6ZBvo",
+      "question_type": "factual",
+      "input": "What was the first AI program Demis Hassabis wrote on his Commodore Amiga?",
+      "actual_output": "The first AI program Demis Hassabis wrote on his Commodore Amiga was a program to play Othello (sometimes called Reversi).",
+      "expected_output": "Around age 12, he wrote a program on his Commodore Amiga to play Othello (Reversi) using alpha-beta search principles because the machine was not powerful enough to run a full chess program.",
+      "latency_sec": 1.118,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 3,
+      "video_id": "Gfr50f6ZBvo",
+      "question_type": "reasoning",
+      "input": "How does Demis Hassabis explain the progression from AlphaGo to AlphaGo Zero, AlphaZero, and MuZero?",
+      "actual_output": "Based on the transcript, Demis Hassabis explains the progression as follows:\n\n*   **AlphaGo:** This was a learning system specifically trained to play Go with the goal of achieving world-champion performance. It relied on human games as a starting point.\n*   **AlphaGo Zero:** This version removed the need for human games, allowing the system to learn by playing against itself from a random starting point.\n*   **AlphaZero:** This version generalized the system by removing specific constraints (such as the symmetry of the Go board), allowing it to play any two-player game from scratch.\n*   **MuZero:** This is the latest version in the trajectory, which extended the capabilities of the previous systems so that the model did not even need to be given the rules of the game.",
+      "expected_output": "AlphaGo was trained specifically to play Go using human games; AlphaGo Zero removed the need for human games by learning from random self-play; AlphaZero removed Go-specific symmetries so it could play any two-player game from scratch; and MuZero went further by learning the rules of the environment itself without being given them.",
+      "latency_sec": 1.53,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.75,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 4,
+      "video_id": "Gfr50f6ZBvo",
+      "question_type": "factual",
+      "input": "What is Levinthal's paradox as discussed in the protein folding section of the conversation?",
+      "actual_output": "Based on the transcript provided, the text does not explicitly name \"Levinthal's paradox.\" However, it describes the core concept of the paradox by noting that an average protein of about 2,000 amino acids can fold into $10^{300}$ different conformations, yet nature and physics are able to solve this search problem and fold the protein in a matter of milliseconds or fractions of a second.",
+      "expected_output": "Levinthal calculated that an average protein can fold into roughly 10 to the power of 300 different conformations, yet in nature physics solves that search problem and folds the protein in milliseconds.",
+      "latency_sec": 1.422,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.25,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 5,
+      "video_id": "Gfr50f6ZBvo",
+      "question_type": "reasoning",
+      "input": "How did DeepMind use deep reinforcement learning to help with nuclear fusion?",
+      "actual_output": "DeepMind used deep reinforcement learning to control high-temperature plasmas in a tokamak. By using a simulator of the plasma, they were able to train an AI system to hold the plasma in specific shapes, overcoming the limitations of traditional hard-coded solutions that could not react in the moment to the plasma's behavior. This work was published in a *Nature* paper.",
+      "expected_output": "Collaborating with EPFL in Switzerland on their test reactor, DeepMind trained a deep reinforcement learning controller to predict plasma behavior milliseconds ahead and adjust superconducting magnetic fields to carve and hold high-temperature plasma in specific shapes for record durations.",
+      "latency_sec": 1.313,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.9166666666666666,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    {
+      "index": 6,
+      "video_id": "Gfr50f6ZBvo",
+      "question_type": "reasoning",
+      "input": "Why does Demis Hassabis believe we are likely alone in the galaxy despite Fermi paradox arguments?",
+      "actual_output": "Based on the transcript provided, Demis Hassabis believes we are likely alone for the following reasons:\n\n*   **Lack of evidence from detection efforts:** He points out that since the dawn of the space age and the start of programs like SETI, we have used radio telescopes and other methods to try to detect signals, yet have found none.\n*   **The human evolutionary timeline:** He notes that humans could have easily been a million years ahead of where we are now, implying that if other civilizations existed, we might have expected to see more advanced signs of them by now.\n*   **The difficulty of coordination:** He questions the likelihood of alien civilizations having the same priorities or being able to agree on matters (such as a \"Star Trek\" style non-interference rule), noting that even humans struggle to coordinate on issues like climate change.",
+      "expected_output": "He argues that if intelligent civilizations were common and even slightly ahead of us, self-replicating probes or megastructures like Dyson spheres and radio emissions would have filled the galaxy within a million years, yet when humanity opened its radio telescopes we heard nothing.",
+      "latency_sec": 40.405,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    {
+      "index": 7,
+      "video_id": "402EyLS59ho",
+      "question_type": "factual",
+      "input": "What are the four core DeepEval concepts introduced at the start of the tutorial?",
+      "actual_output": "Based on the transcript provided, the four core concepts mentioned in relation to DeepEval are:\n\n1.  **DeepEval** (the platform/tool)\n2.  **Metrics**\n3.  **Test cases**\n4.  **Goldens** (defined as a set of questions and expected output)",
+      "expected_output": "The four core concepts are Goldens, Test Cases, Datasets, and Metrics.",
+      "latency_sec": 7.591,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.3333333333333333,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    {
+      "index": 8,
+      "video_id": "402EyLS59ho",
+      "question_type": "factual",
+      "input": "What four fields are packaged inside an LLMTestCase object in the tutorial's workflow?",
+      "actual_output": "According to the transcript, an LLM test case contains these four things:\n\n1.  **Actual input**\n2.  **Actual output**\n3.  **Context**\n4.  **Expected output** (from the golden)",
+      "expected_output": "An LLMTestCase packages four fields: input, actual_output, retrieval_context (context), and expected_output.",
+      "latency_sec": 0.971,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 9,
+      "video_id": "402EyLS59ho",
+      "question_type": "reasoning",
+      "input": "How does the tutorial's `ensure_dataset_with_goldens` helper avoid duplicate entries in Confident AI?",
+      "actual_output": "The `ensure_dataset_with_goldens` function avoids duplicate entries by checking the existing goldens in the dataset before adding new ones. \n\nAccording to the transcript, the logic works as follows:\n*   If no goldens are present in the dataset, it adds the requested goldens.\n*   If goldens are already present, it compares them to the requested ones. \n*   It will not add goldens that are already present; it only appends the new, unique goldens to the existing set.",
+      "expected_output": "It pulls the existing dataset using its alias, collects all existing golden inputs into a set, checks each requested golden against that set, and only appends and pushes goldens whose inputs are not already present.",
+      "latency_sec": 2.809,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 10,
+      "video_id": "402EyLS59ho",
+      "question_type": "factual",
+      "input": "What does the `query_rag` function return in the speaker's implementation?",
+      "actual_output": "According to the transcript, the `query_rag` function returns a dictionary with the keys \"answer\" and \"context\".",
+      "expected_output": "It takes a user question and returns a dictionary containing the generated answer and the retrieved context.",
+      "latency_sec": 1.114,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.75,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 11,
+      "video_id": "402EyLS59ho",
+      "question_type": "reasoning",
+      "input": "Why did the speaker only create two goldens when running the live demo in the video?",
+      "actual_output": "The speaker only created two goldens because LLM APIs are used \"pretty expensively\" when running the DP wells.",
+      "expected_output": "Because DeepEval makes multiple LLM-as-a-judge API calls per test case during evaluation, which is expensive and slow, so using only two goldens kept the demo fast and low-cost.",
+      "latency_sec": 1.503,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 12,
+      "video_id": "402EyLS59ho",
+      "question_type": "factual",
+      "input": "In the demo's evaluation report, which metric failed and what was its score versus the threshold?",
+      "actual_output": "In the evaluation report, the **contextual relevancy** metric failed. Its score was **0.35**, which fell below the threshold of **0.5**.",
+      "expected_output": "Contextual Relevancy failed because its score was 0.35 (explained as 0.38 in the reason text), which fell below the 0.5 threshold.",
+      "latency_sec": 1.188,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 13,
+      "video_id": "7_LTU0LA374",
+      "question_type": "reasoning",
+      "input": "Why are traditional metrics like BLEU, ROUGE, and F1 insufficient for evaluating RAG systems?",
+      "actual_output": "According to the transcript, traditional metrics like BLEU, ROUGE, and F1 are insufficient for evaluating RAG systems because they only look at surface-level text similarity, wording, coverage, and factual elements. \n\nRAG systems require an additional layer of evaluation that focuses on:\n*   **Retrieval:** How relevant the retrieved context is.\n*   **Grounding:** How well the answer uses the retrieved context.\n*   **Accuracy:** How accurately the answer responds to the question. \n\nBecause RAG systems involve both retrieval and generation steps, these traditional metrics are not enough to evaluate the quality of the final response.",
+      "expected_output": "Traditional metrics only measure surface-level word/n-gram overlap or exact entity matching against a fixed reference text, whereas a RAG system has two distinct stages—retrieval and generation—so it needs metrics that evaluate context relevance, grounding, and whether the answer addresses the question.",
+      "latency_sec": 4.945,
+      "metrics": {
+        "Faithfulness": {
+          "score": 0.875,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.8055555555555555,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 14,
+      "video_id": "7_LTU0LA374",
+      "question_type": "factual",
+      "input": "What is the difference between BLEU and ROUGE as explained in the video?",
+      "actual_output": "Based on the transcript provided, the differences between BLEU and ROUGE are as follows:\n\n*   **BLEU:** It is described as the standard for machine translation, where short word patterns are considered a strong signal of equality.\n*   **ROUGE (Recall-Oriented Understudy for Gisting Evaluation):** It focuses on recall—measuring how much of the important information from the reference appears in the generated output. It is specifically useful for summarization because it assigns a strong score when the core ideas are captured, even if the phrasing changes. Unlike metrics that require exact word-for-word matching, ROUGE is preferred when \"meaning matters more than matching sentences word for word.\"",
+      "expected_output": "BLEU focuses on n-gram precision (how many n-grams in the generated text appear in the reference, with a brevity penalty), making it standard for machine translation, whereas ROUGE focuses on recall (how much of the reference's important content is captured), making it ideal for summarization.",
+      "latency_sec": 1.989,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 15,
+      "video_id": "7_LTU0LA374",
+      "question_type": "factual",
+      "input": "If a retriever fetches 5 chunks for a query and only 2 of them are relevant, what is the Context Precision score?",
+      "actual_output": "The Context Precision score is 0.4 (calculated as 2 out of 5).",
+      "expected_output": "The Context Precision score is 2 out of 5, which equals 0.4.",
+      "latency_sec": 1.196,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 16,
+      "video_id": "7_LTU0LA374",
+      "question_type": "factual",
+      "input": "How does Context Recall differ from Context Precision in the video's explanation?",
+      "actual_output": "Based on the transcript provided, the difference is explained as follows:\n\n*   **Context Precision** measures how much of the retrieved context is actually relevant to the question. It is calculated by dividing the number of useful chunks by the total number of chunks retrieved (e.g., if two out of five chunks are useful, the precision is 0.4). A higher precision indicates that the retriever brought in less noise.\n*   **Context Recall** is described as telling us \"how much of the relevant information was successfully retrieved.\" \n\nWhile the text provides a specific calculation example for precision, it defines recall specifically by its ability to measure the success of retrieving the total amount of relevant information available.",
+      "expected_output": "Context Precision measures how much of the retrieved chunks are relevant (signal vs. noise), while Context Recall measures how much of all the relevant information existing in the database the retriever actually managed to find (e.g., finding 2 out of 3 relevant chunks gives a recall of 0.66).",
+      "latency_sec": 1.506,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 0.8571428571428571,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 17,
+      "video_id": "7_LTU0LA374",
+      "question_type": "reasoning",
+      "input": "What causes Faithfulness to drop in a RAG system according to the video?",
+      "actual_output": "According to the video, faithfulness drops if the answer includes a claim that is not present in the retrieved context. Essentially, faithfulness decreases when the answer is no longer grounded in the provided evidence.",
+      "expected_output": "Faithfulness drops when the generated answer includes statements or claims that are not supported by or present in the retrieved context chunks.",
+      "latency_sec": 2.957,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.3333333333333333,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 18,
+      "video_id": "7_LTU0LA374",
+      "question_type": "factual",
+      "input": "What are the four main evaluation scores provided by the RAGAS framework?",
+      "actual_output": "Based on the transcript provided, the four evaluation metrics mentioned are:\n\n1. Context precision\n2. Context recall\n3. Answer relevance\n4. Faithfulness",
+      "expected_output": "RAGAS provides four main scores: Faithfulness, Answer Relevance, Context Precision, and Context Recall.",
+      "latency_sec": 1.189,
+      "metrics": {
+        "Faithfulness": {
+          "score": 0.8,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    {
+      "index": 19,
+      "video_id": "Gfr50f6ZBvo",
+      "question_type": "out_of_scope",
+      "input": "What is the current stock price of Nvidia today?",
+      "actual_output": "The provided transcript does not contain information regarding the current stock price of Nvidia.",
+      "expected_output": "I cannot answer this because the video transcript does not contain information about Nvidia's current stock price.",
+      "latency_sec": 4.386,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    {
+      "index": 20,
+      "video_id": "Gfr50f6ZBvo",
+      "question_type": "adversarial_unanswerable",
+      "input": "What did Demis Hassabis say about GPT-5's release date in this podcast?",
+      "actual_output": "Based on the transcript provided, Demis Hassabis does not mention anything about a GPT-5 release date.",
+      "expected_output": "The video transcript does not mention GPT-5 or its release date.",
+      "latency_sec": 79.389,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 21,
+      "video_id": "402EyLS59ho",
+      "question_type": "out_of_scope",
+      "input": "How do I configure a PostgreSQL database connection in FastAPI?",
+      "actual_output": "Based on the provided transcript, there is no information regarding how to configure a PostgreSQL database connection in FastAPI. The transcript focuses on RAG (Retrieval-Augmented Generation) application components, such as dataset aliases, environment variables, and functions like `query_rack` and `insure_data_set_with_goldens`.",
+      "expected_output": "I cannot answer this because the provided video transcript only covers RAG evaluation with DeepEval and Confident AI, not PostgreSQL or FastAPI setup.",
+      "latency_sec": 1.247,
+      "metrics": {
+        "Faithfulness": {
+          "score": 0.6666666666666666,
+          "passed": false
+        },
+        "Answer Relevancy": {
+          "score": 0.2,
+          "passed": false
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 22,
+      "video_id": "402EyLS59ho",
+      "question_type": "adversarial_unanswerable",
+      "input": "What exact monthly subscription price did the speaker say Confident AI charges?",
+      "actual_output": "The provided transcript does not mention any monthly subscription price for Confident AI.",
+      "expected_output": "The video transcript does not mention any pricing or subscription cost for Confident AI.",
+      "latency_sec": 1.133,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    {
+      "index": 23,
+      "video_id": "7_LTU0LA374",
+      "question_type": "out_of_scope",
+      "input": "Can you write a Python script to fine-tune Llama 3 using LoRA?",
+      "actual_output": "Based on the provided transcript, there is no information regarding how to write a Python script to fine-tune Llama 3 using LoRA. The transcript focuses on RAG (Retrieval-Augmented Generation) evaluation, the Ragas framework, and traditional evaluation metrics like BLEU.",
+      "expected_output": "I cannot answer this because the provided video transcript only explains RAG evaluation metrics and RAGAS, not fine-tuning Llama 3.",
+      "latency_sec": 1.259,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 1.0,
+          "passed": true
+        }
+      }
+    },
+    {
+      "index": 24,
+      "video_id": "7_LTU0LA374",
+      "question_type": "adversarial_unanswerable",
+      "input": "What exact score did GPT-4 achieve on the MMLU benchmark in this video?",
+      "actual_output": "The provided transcript does not mention GPT-4 or the MMLU benchmark.",
+      "expected_output": "The video transcript does not mention GPT-4 or MMLU benchmark scores.",
+      "latency_sec": 1.139,
+      "metrics": {
+        "Faithfulness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Answer Relevancy": {
+          "score": 1.0,
+          "passed": true
+        },
+        "Contextual Precision": {
+          "score": 0.0,
+          "passed": false
+        },
+        "Contextual Recall": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    }
+  ]
+}
